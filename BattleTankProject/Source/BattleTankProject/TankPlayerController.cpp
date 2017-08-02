@@ -2,11 +2,6 @@
 
 #include "TankPlayerController.h"
 
-ATank * ATankPlayerController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
-}
-
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -25,3 +20,37 @@ void ATankPlayerController::BeginPlay()
 	}
 }
 
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	AimTowardsCrosshair();
+}
+
+ATank * ATankPlayerController::GetControlledTank() const
+{
+	return Cast<ATank>(GetPawn());
+}
+
+void ATankPlayerController::AimTowardsCrosshair()
+{
+	if (!GetControlledTank())
+	{
+		return;
+	}
+
+	FVector HitLocation; // Out paramater
+
+	if (GetSightlyRayHitLocation(HitLocation))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+
+		// Tell controlled tank to aim at this point.
+	}	
+}
+
+// Get world location of linetrace through crosshair, true if hits landscape.
+bool ATankPlayerController::GetSightlyRayHitLocation(FVector & OutHitLocation) const
+{
+	OutHitLocation = FVector(0.0);
+	return true;
+}

@@ -19,4 +19,11 @@ public:
 	ATank * GetControlledTank() const;
 	ATank * MyTank = nullptr;
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+	int TickCount = 0;
+
+	// Start the tank moving the barrel so that a shot would it where the
+	// crosshair intersects the world.
+	void AimTowardsCrosshair();
+	bool GetSightlyRayHitLocation(FVector & OutHitLocation) const;
 };
