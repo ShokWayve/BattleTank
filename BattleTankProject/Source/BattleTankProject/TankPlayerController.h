@@ -3,7 +3,7 @@
 #pragma once
 
 #include "Tank.h"
-#include "CoreMinimal.h"
+#include "Engine.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 
@@ -26,4 +26,17 @@ public:
 	// crosshair intersects the world.
 	void AimTowardsCrosshair();
 	bool GetSightlyRayHitLocation(FVector & OutHitLocation) const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Aiming)
+	float CrosshairXLocation = 0.5f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Aiming)
+	float CrosshairYLocation = 0.33333f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Aiming)
+	float LineTraceRange = 1000000;
+
+	bool GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const;
+
+	bool GetLookVectorHitLocation(FVector LookLocation, FVector & HitLocation) const;
 };
