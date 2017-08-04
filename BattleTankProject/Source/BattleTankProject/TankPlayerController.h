@@ -25,7 +25,7 @@ public:
 	// Start the tank moving the barrel so that a shot would it where the
 	// crosshair intersects the world.
 	void AimTowardsCrosshair();
-	bool GetSightlyRayHitLocation(FVector & OutHitLocation) const;
+	bool GetSightRayHitLocation(FVector & OutHitLocation) const;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Aiming)
 	float CrosshairXLocation = 0.5f;
@@ -39,4 +39,6 @@ public:
 	bool GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const;
 
 	bool GetLookVectorHitLocation(FVector LookLocation, FVector & HitLocation) const;
+
+	FHitResult ItemHitResult;
 };

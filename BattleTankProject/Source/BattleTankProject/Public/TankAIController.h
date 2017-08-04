@@ -19,5 +19,7 @@ public:
 	ATank * GetControlledTank() const;
 	ATank * GetPlayerTank() const;
 	ATank * MyTank = nullptr;
+	FVector PlayerTankLocation = FVector(0.0f);
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 };
