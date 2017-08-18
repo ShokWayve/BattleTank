@@ -15,10 +15,12 @@ class BATTLETANKPROJECT_API UMyTankAimingComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UMyTankAimingComponent();
+	void SetBarrelReference(UStaticMeshComponent * BarrelToSet);
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	UStaticMeshComponent * Barrel = nullptr;
 
 public:	
 	// Called every frame
